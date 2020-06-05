@@ -4,24 +4,30 @@
 	import Cover from './components/Cover.svelte';
 	import Menu from './components/Menu.svelte';
 
-	const intro = 'I develop things for the web.'
 	let menuActive = false;
-</script>
 
+	function closeMenu() {
+		menuActive = false;
+	}
+</script>
 
 <Cover bind:menuActive/>
 <Header bind:menuActive />
 {#if menuActive}
-	<Menu />
+	<Menu on:closeMenu="{closeMenu}" />
 {/if}
 
 <main class="{ menuActive ? 'is-hidden' : '' }">
-	<section>
+	<section class="centered">
 		<Intro />
 	</section>
 
+	<section >
+		<h1 id="work">Work</h1>
+	</section>
+
 	<section>
-		<h1>{ intro }</h1>
+		<h1 id="contact">Contact</h1>
 	</section>
 </main>
 
@@ -42,8 +48,11 @@
 
 	section {
 		height: 100vh;
-		display: flex;
-		align-items: center;
-		justify-content: center;
+		
+		&.centered {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
 	}
 </style>

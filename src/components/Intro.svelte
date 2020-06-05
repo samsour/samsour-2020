@@ -27,7 +27,7 @@
         <span class:is-active="{word == shufflingWords[activeIndex]}">{word}</span>
     {/each}
     </div>
-    <span>things for the web</span>
+    <span>things for the web.</span>
 </h1>
 
 <style>

@@ -1,5 +1,8 @@
 <script>
     import { fly } from "svelte/transition";
+    import { createEventDispatcher } from 'svelte';
+
+	const dispatch = createEventDispatcher();
 
     const animation = {
         duration: 1000,
@@ -22,6 +25,10 @@
             name: 'contact'
         },
     ]
+
+    function closeMenu() {
+        dispatch('closeMenu');
+    }
 </script>
 
 <nav>
@@ -36,10 +43,13 @@
             out:fly="{{
                 x: animation.distance,
                 duration: animation.duration,
-                delay: -animation.initialDelay + i * animation.delay
+                delay: i * (animation.delay / 4)
             }}"
             >
-                <a href="{link.url}">{link.name}</a>
+                <a
+                    href="{link.url}"
+                    on:click="{closeMenu}"
+                >{link.name}</a>
             </li>
         {/each}
     </ul>

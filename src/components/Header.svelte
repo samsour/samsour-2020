@@ -1,27 +1,31 @@
 <script>
     const name = 'Sam Sauer';
-    const menu = 'Menu'
+    const menuText = 'menu';
+    const closeText = 'close';
 
     export let menuActive = false;
 
     function toggleMenu() {
         menuActive = !menuActive;
     }
+
+    function handleLogoClick() {
+        menuActive = false;
+
+    }
 </script>
 
 <header>
-	<h2>{ name }</h2>
-    <div>
-        <button on:click="{toggleMenu}">
-            <img alt="Menu Button" src="./svg/menu-button.svg">
-        </button>
+	<span on:click="{handleLogoClick}">{ name }</span>
+    <button on:click="{toggleMenu}">
+        <img alt="Menu Button" src="./svg/menu-button.svg">
         <span class="rotated">
-
+            {menuActive ? closeText : menuText}
         </span>
-    </div>
+    </button>
 </header>
 
-<style>
+<style lang="scss">
 header {
     width: 80vw;
     margin: 0 auto;
@@ -34,7 +38,7 @@ header {
     transform: translateX(-50%);
 }
 
-h2 {
+span {
     margin: 0;
     font-size: 24px;
     font-weight: 900;
@@ -47,5 +51,27 @@ button {
     font-size: 24px;
     font-weight: 400;
     cursor: pointer;
+    display: block;
+    margin: 0;
+    padding: 20px;
+    position: relative;
+    transform: translate(20px, -20px);
+
+    &:hover {
+        .rotated {
+            opacity: 1;
+        }
+    }
+}
+
+.rotated {
+    color: #D9D9D9;
+    display: block;
+    transform: rotate(-90deg);
+    transform-origin: right;
+    z-index: -1;
+    position: absolute;
+    right: 20%;
+    opacity: 0;
 }
 </style>
