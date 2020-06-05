@@ -1,48 +1,43 @@
 <script>
-	const name = 'Sam Sauer';
-	let activeSidebar = false;
+	import Header from './components/Header.svelte';
+	import Intro from './components/Intro.svelte';
+	import Cover from './components/Cover.svelte';
+	import Menu from './components/Menu.svelte';
+
 	const intro = 'I develop things for the web.'
+	let menuActive = false;
 </script>
 
-<style>
-	@import url('https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap');
 
-	:global(body) {
-		background: #fff;
-		color: #000;
-		padding: 0;
-		margin: 0;
-		font-family: 'Lato', sans-serif;
-	}
+<Cover bind:menuActive/>
+<Header bind:menuActive />
+{#if menuActive}
+	<Menu />
+{/if}
 
-	header, main {
-		width: 80vw;
-		margin: 0 auto;
-	}
+<main class="{ menuActive ? 'is-hidden' : '' }">
+	<section>
+		<Intro />
+	</section>
 
-	h1 {
-		margin: 0;
-		font-size: 100px;
-		width: 70%;
-		margin: auto;
-	}
+	<section>
+		<h1>{ intro }</h1>
+	</section>
+</main>
 
-	header {
-		display: flex;
-		justify-content: space-between;
-		margin-top: 120px;
-		position: fixed;
-		left: 50%;
-		transform: translateX(-50%);
-	}
-
+<style lang="scss">
 	main {
-		transition: transform 0.25s ease-in-out;
+		width: 80vw;
+		max-width: 740px;
+		margin: 0 auto;
+		transition: all 0.25s ease-in-out 0.5s;
 		position: relative;
 	}
 
-	main.is-transformed {
-		transform: translateX(-10%);
+	main.is-hidden {
+		transform: translateX(-20%);
+		opacity: 0;
+		transition: all 0.25s ease-in-out;
 	}
 
 	section {
@@ -52,17 +47,3 @@
 		justify-content: center;
 	}
 </style>
-
-<header>
-	<span>{ name }</span>
-	<button on:click="{() => activeSidebar = !activeSidebar }">Menu</button>
-</header>
-
-<main class="{ activeSidebar ? 'is-transformed' : '' }">
-	<section>
-		<h1>{ intro }</h1>
-	</section>
-	<section>
-		<h1>{ intro }</h1>
-	</section>
-</main>
