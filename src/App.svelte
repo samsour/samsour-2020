@@ -3,6 +3,7 @@
 	import Intro from './components/Intro.svelte';
 	import Cover from './components/Cover.svelte';
 	import Menu from './components/Menu.svelte';
+	import Footer from './components/Footer.svelte';
 
 	let menuActive = false;
 
@@ -30,6 +31,8 @@
 		<h1 id="contact">Contact</h1>
 	</section>
 </main>
+
+<Footer />
 
 <style lang="scss">
 	main {
