@@ -7,7 +7,7 @@
     const animation = {
         duration: 1000,
         initialDelay: 700,
-        delay: 300,
+        delay: 200,
         distance: 200
     }
 
@@ -21,8 +21,8 @@
             name: 'projects'
         },
         {
-            url: '#contact',
-            name: 'contact'
+            url: '#social',
+            name: 'social'
         },
     ]
 
@@ -43,7 +43,7 @@
             out:fly="{{
                 x: animation.distance,
                 duration: animation.duration,
-                delay: i * (animation.delay / 4)
+                delay: (links.length - 1 - i) * (animation.delay)
             }}"
             >
                 <a

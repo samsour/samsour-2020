@@ -14,9 +14,11 @@ div {
     left: 0;
     width: 200%;
     transform: translateX(100%);
-    transition: transform 1s ease-in-out;
+    transition: transform 1s ease-in-out 0.5s;
+    z-index: 100;
 
     &.is-active {
+        transition: transform 1s ease-in-out 0s;
         transform: translateX(-100%);
     }
 }

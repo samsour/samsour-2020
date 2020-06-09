@@ -1,11 +1,19 @@
 <script>
+	import { fly } from "svelte/transition";
 	import Header from './components/Header.svelte';
 	import Intro from './components/Intro.svelte';
 	import Cover from './components/Cover.svelte';
 	import Menu from './components/Menu.svelte';
 	import Footer from './components/Footer.svelte';
+	import SocialLinks from './components/SocialLinks.svelte';
 
 	let menuActive = false;
+
+	const animation = {
+        duration: 1000,
+        delay: 1200,
+        distance: 200
+    }
 
 	function closeMenu() {
 		menuActive = false;
@@ -18,21 +26,35 @@
 	<Menu on:closeMenu="{closeMenu}" />
 {/if}
 
-<main class="{ menuActive ? 'is-hidden' : '' }">
-	<section class="centered">
-		<Intro />
-	</section>
+{#if !menuActive}
+	<main
+		in:fly="{{
+			x: animation.distance,
+			duration: animation.duration,
+			delay:animation.delay
+		}}"
+		out:fly="{{
+			x: animation.distance,
+			duration: animation.duration
+		}}"
+	>
+		<section class="full centered">
+			<Intro />
+		</section>
 
-	<section >
-		<h1 id="work">Work</h1>
-	</section>
+		<section >
+			<h1 id="work">Work</h1>
+		</section>
 
-	<section>
-		<h1 id="contact">Contact</h1>
-	</section>
-</main>
+		<section id="social" class="centered">
+			<SocialLinks />
+		</section>
+	</main>
+{/if}
 
-<Footer />
+{#if !menuActive}
+	<Footer />
+{/if}
 
 <style lang="scss">
 	main {
@@ -50,12 +72,16 @@
 	}
 
 	section {
-		height: 100vh;
+		height: 80vh;
 		
 		&.centered {
 			display: flex;
 			align-items: center;
 			justify-content: center;
+		}
+
+		&.full {
+			height: 100vh;
 		}
 	}
 </style>

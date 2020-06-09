@@ -42,6 +42,7 @@ span {
     margin: 0;
     font-size: 24px;
     font-weight: 900;
+    cursor: pointer;
 }
 
 button {
