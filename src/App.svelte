@@ -38,7 +38,7 @@
 			duration: animation.duration
 		}}"
 	>
-		<section class="full centered">
+		<section class="full center">
 			<Intro />
 		</section>
 
@@ -46,7 +46,7 @@
 			<h1 id="work">Work</h1>
 		</section>
 
-		<section id="social" class="centered">
+		<section id="social" class="center vertical">
 			<SocialLinks />
 		</section>
 	</main>
@@ -59,9 +59,8 @@
 <style lang="scss">
 	main {
 		width: 80vw;
-		max-width: 740px;
 		margin: 0 auto;
-		transition: all 0.25s ease-in-out 0.5s;
+		// transition: all 0.25s ease-in-out 0.5s;
 		position: relative;
 	}
 
@@ -74,10 +73,22 @@
 	section {
 		height: 80vh;
 		
-		&.centered {
-			display: flex;
-			align-items: center;
-			justify-content: center;
+		&.center {
+			&:not(.vertical):not(.horizontal) {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+
+			&.vertical {
+				display: flex;
+				align-items: center;
+			}
+
+			&.horizontal {
+				display: flex;
+				justify-content: center;
+			}
 		}
 
 		&.full {
