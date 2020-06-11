@@ -1,0 +1,25 @@
+$media-direction: min; // min = mobile first
+$breakpoints: (
+    default: "",
+    small: 480px,
+    medium: 768px,
+    large: 1024px,
+    xlarge: 1280px,
+);
+
+:root {
+    --color-primary: #000;
+    --color-secondary: #fff;
+
+    --content-width: 80vw;
+    --max-width: 80rem;
+    --headline-size: 4rem;
+    
+    @include breakpoint(medium) {
+        --headline-size: 10vw;
+    }
+
+    @include breakpoint(large) {
+        --headline-size: 7rem;
+    }
+}
