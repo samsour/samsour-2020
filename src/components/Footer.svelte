@@ -87,6 +87,7 @@ const animation = {
 
     .content {
         width: 80vw;
+        max-width: 1280px;
         margin: 0 auto;
         display: flex;
         justify-content: space-between;

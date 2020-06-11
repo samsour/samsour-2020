@@ -21,8 +21,8 @@
             name: 'projects'
         },
         {
-            url: '#social',
-            name: 'social'
+            url: '#contact',
+            name: 'contact'
         },
     ]
 
@@ -59,6 +59,7 @@
 nav {
     position: fixed;
     width: 80vw;
+    max-width: 1280px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);

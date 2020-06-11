@@ -16,7 +16,7 @@
 </script>
 
 <header>
-	<span on:click="{handleLogoClick}">{ name }</span>
+	<div on:click="{handleLogoClick}">{ name }</div>
     <button on:click="{toggleMenu}">
         <img alt="Menu Button" src="./svg/menu-button.svg">
         <span class="rotated">
@@ -28,6 +28,7 @@
 <style lang="scss">
 header {
     width: 80vw;
+    max-width: 1280px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -56,7 +57,7 @@ button {
     margin: 0;
     padding: 20px;
     position: relative;
-    transform: translate(20px, -20px);
+    transform: translate(19px, -20px);
 
     &:hover {
         .rotated {

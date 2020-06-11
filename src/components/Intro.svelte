@@ -19,21 +19,28 @@
 	});
     
 </script>
+<template>
+    <h1>
+        <span>I</span>
+        <div class="shuffling-words">
+        {#each shufflingWords as word}
+            <span class:is-active="{word == shufflingWords[activeIndex]}">{word}</span>
+        {/each}
+        </div>
+        <span>things </span>
+        <span>for the web.</span>
+    </h1>
+</template>
+    
 
-<h1>
-    <span>I</span>
-    <div class="shuffling-words">
-    {#each shufflingWords as word}
-        <span class:is-active="{word == shufflingWords[activeIndex]}">{word}</span>
-    {/each}
-    </div>
-    <span>things for the web.</span>
-</h1>
-
-<style>
+<style lang="scss">
 h1 {
-    font-size: 100px;
+    font-size: var(--headline-size);
     font-weight: 900;
+
+    @include breakpoint(medium) {
+        width: 75%;
+    }
 }
 
 .shuffling-words {
@@ -51,13 +58,13 @@ h1 {
     top: 50%;
     transform: translateY(-50%);
     user-select: none;
-}
 
-.shuffling-words span:not(.is-active):nth-child(2) {
-    left: 20px;
-}
-.shuffling-words span:not(.is-active):nth-child(3) {
-    left: 20px;
-}
+    &:nth-child(2) {
+        left: 20px;
+    }
 
+    &:nth-child(3) {
+        left: 20px;
+    }
+}
 </style>
