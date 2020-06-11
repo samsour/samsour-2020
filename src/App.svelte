@@ -1,6 +1,7 @@
 <script>
 	import { fly } from "svelte/transition";
 	import Header from './components/Header.svelte';
+	import Section from './components/Section.svelte';
 	import Intro from './components/Intro.svelte';
 	import Cover from './components/Cover.svelte';
 	import Menu from './components/Menu.svelte';
@@ -20,79 +21,57 @@
 	}
 </script>
 
-<Cover bind:menuActive/>
-<Header bind:menuActive />
-{#if menuActive}
-	<Menu on:closeMenu="{closeMenu}" />
-{/if}
+<template>
+	<Cover bind:menuActive/>
+	<Header bind:menuActive />
+	
+	{#if menuActive}
+		<Menu on:closeMenu="{closeMenu}" />
+	{/if}
 
-{#if !menuActive}
-	<main
-		in:fly="{{
-			x: animation.distance,
-			duration: animation.duration,
-			delay:animation.delay
-		}}"
-		out:fly="{{
-			x: animation.distance,
-			duration: animation.duration
-		}}"
-	>
-		<section class="full center">
-			<Intro />
-		</section>
+	{#if !menuActive}
+		<main
+			in:fly="{{
+				x: animation.distance,
+				duration: animation.duration,
+				delay:animation.delay
+			}}"
+			out:fly="{{
+				x: animation.distance,
+				duration: animation.duration
+			}}"
+		>
+			<Section fullscreen center vertical>
+				<Intro />
+			</Section>
 
-		<section >
-			<h1 id="work">Work</h1>
-		</section>
+			<Section center dark>
+				<h1 id="work">Work</h1>
+			</Section>
 
-		<section id="social" class="center vertical">
-			<SocialLinks />
-		</section>
-	</main>
-{/if}
+			<Section id="contact" center vertical>
+				<SocialLinks />
+			</Section>
+		</main>
+	{/if}
 
-{#if !menuActive}
-	<Footer />
-{/if}
+	{#if !menuActive}
+		<Footer />
+	{/if}
+</template>
 
 <style lang="scss">
-	main {
-		width: 80vw;
-		margin: 0 auto;
-		// transition: all 0.25s ease-in-out 0.5s;
-		position: relative;
-	}
 
-	main.is-hidden {
-		transform: translateX(-20%);
-		opacity: 0;
-		transition: all 0.25s ease-in-out;
-	}
+main {
+	width: var(--content-width);
+	max-width: var(--max-width);
+	margin: 0 auto;
+	position: relative;
+}
 
-	section {
-		height: 80vh;
-		
-		&.center {
-			&:not(.vertical):not(.horizontal) {
-				display: flex;
-				align-items: center;
-				justify-content: center;
-			}
-
-			&.vertical {
-				display: flex;
-				align-items: center;
-			}
-
-			&.horizontal {
-				display: flex;
-				justify-content: center;
-			}
-		}
-
-		&.full {
-			height: 100vh;
-		}
-	}
+main.is-hidden {
+	transform: translateX(-20%);
+	opacity: 0;
+	transition: all 0.25s ease-in-out;
+}
 </style>
