@@ -1,5 +1,5 @@
 <script>
-    const name = 'Sam Sauer';
+    import Logo from './Logo.svelte';
     const menuText = 'menu';
     const closeText = 'close';
 
@@ -8,15 +8,10 @@
     function toggleMenu() {
         menuActive = !menuActive;
     }
-
-    function handleLogoClick() {
-        menuActive = false;
-
-    }
 </script>
 
 <header>
-	<div on:click="{handleLogoClick}">{ name }</div>
+    <Logo />
     <button on:click="{toggleMenu}">
         <img alt="Menu Button" src="./svg/menu-button.svg">
         <span class="rotated">
@@ -57,7 +52,7 @@ button {
     margin: 0;
     padding: 20px;
     position: relative;
-    transform: translate(19px, -20px);
+    transform: translateX(19px);
 
     &:hover {
         .rotated {

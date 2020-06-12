@@ -31,17 +31,7 @@
 	{/if}
 
 	{#if !menuActive}
-		<main
-			in:fly="{{
-				x: animation.distance,
-				duration: animation.duration,
-				delay:animation.delay
-			}}"
-			out:fly="{{
-				x: animation.distance,
-				duration: animation.duration
-			}}"
-		>
+		<main>
 			<Section fullscreen center vertical>
 				<Illustration background left name="sitting" />
 				<Intro />
