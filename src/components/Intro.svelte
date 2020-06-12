@@ -21,13 +21,15 @@
 </script>
 <template>
     <h1>
-        <span>I</span>
-        <div class="shuffling-words">
-        {#each shufflingWords as word}
-            <span class:is-active="{word == shufflingWords[activeIndex]}">{word}</span>
-        {/each}
+        <div>
+            <span>I</span>
+            <div class="shuffling-words">
+                {#each shufflingWords as word}
+                    <span class:is-active="{word == shufflingWords[activeIndex]}">{word}</span>
+                {/each}
+            </div>
+            <span>things </span>
         </div>
-        <span>things </span>
         <span>for the web.</span>
     </h1>
 </template>
@@ -37,8 +39,10 @@
 h1 {
     font-size: var(--headline-size);
     font-weight: 900;
+    text-align: right;
 
     @include breakpoint(medium) {
+        margin-left: auto;
         width: 75%;
     }
 }

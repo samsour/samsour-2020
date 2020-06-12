@@ -9,6 +9,7 @@
 <style lang="scss">
 section {
     height: 80vh;
+    position: relative;
 
     &.dark {
         background: #000;

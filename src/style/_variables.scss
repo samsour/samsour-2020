@@ -16,10 +16,10 @@ $breakpoints: (
     --headline-size: 4rem;
     
     @include breakpoint(medium) {
-        --headline-size: 10vw;
+        --headline-size: 9vw;
     }
 
     @include breakpoint(large) {
-        --headline-size: 7rem;
+        --headline-size: 6rem;
     }
 }

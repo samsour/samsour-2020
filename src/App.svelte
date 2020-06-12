@@ -2,6 +2,7 @@
 	import { fly } from "svelte/transition";
 	import Header from './components/Header.svelte';
 	import Section from './components/Section.svelte';
+	import Illustration from './components/Illustration.svelte';
 	import Intro from './components/Intro.svelte';
 	import Cover from './components/Cover.svelte';
 	import Menu from './components/Menu.svelte';
@@ -42,14 +43,15 @@
 			}}"
 		>
 			<Section fullscreen center vertical>
+				<Illustration background left name="sitting" />
 				<Intro />
 			</Section>
 
 			<Section center dark>
-				<h1 id="work">Work</h1>
+				<h1>Work</h1>
 			</Section>
 
-			<Section id="contact" center vertical>
+			<Section center vertical>
 				<SocialLinks />
 			</Section>
 		</main>
