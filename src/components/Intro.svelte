@@ -3,6 +3,8 @@
     const speed = 1500; // ms to change words
     const shufflingWords = ['develop', 'design', 'create'];
     let activeIndex = 0;
+
+    let y;
     
     function shuffleWords() {
         if(activeIndex < shufflingWords.length - 1) {
@@ -19,8 +21,10 @@
 	});
     
 </script>
+
+<svelte:window bind:scrollY={y}/>
 <template>
-    <h1>
+    <h1 style="transform: translate(0,{y *1.2 }px)">
         <div>
             <span>I</span>
             <div class="shuffling-words">
