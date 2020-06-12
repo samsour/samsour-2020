@@ -42,11 +42,16 @@ ul {
     padding: 0;
     display: flex;
     position: relative;
-    left: -30px;
+    flex-flow: row wrap;
+    // overflow-x: scroll;
 }
 
-li:not(:last-of-type) {
-    margin-right: 40px;
+li {
+    display: block;
+    
+    &:not(:last-of-type) {
+        margin-right: 40px;
+    }
 }
 
 a {
